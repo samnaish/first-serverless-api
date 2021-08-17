@@ -4,7 +4,7 @@ A hello world rest API that returns a meassage of (you guessed... "hello World")
 
 [Vist website](https://www.npmjs.com/package/serverless-offline)
 
-### OR
+### OR, have the install command.
 
 ```
 npm i serverless-offline
