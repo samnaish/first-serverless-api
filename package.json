@@ -10,8 +10,5 @@
   "license": "ISC",
   "devDependencies": {
     "serverless-offline": "^8.0.0"
-  },
-  "dependencies": {
-    "slspress": "^2.2.5"
   }
 }
