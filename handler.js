@@ -1,5 +1,7 @@
-exports.helloWorld = async (event) => {
-  console.log('request successful!');
+// import { connectToDatabase } from "./lib/database";
+
+module.exports.helloWorld = async () => {
+  console.log('GET request successful!');
   const rawDateString = new Date();
   const neatDate = rawDateString.toLocaleDateString();
   const time = rawDateString.toLocaleTimeString();
@@ -9,17 +11,17 @@ exports.helloWorld = async (event) => {
       {
         message: 'Hello World, I have done it!',
         date: neatDate,
-        time: time,
-        input: event.queryStringParameters
+        time: time
       }
     )
   };
   return response;
 };
 
-exports.getParams = async (event) => {
+module.exports.getParams = async (event, context, callback) => {
+  console.log('POST request successful!');
   const query = event.queryStringParameters;
-  return {
+  const response = {
     statusCode: 201,
     body: JSON.stringify(
       {
@@ -28,4 +30,5 @@ exports.getParams = async (event) => {
       }
     )
   };
+  callback(null, response);
 };
