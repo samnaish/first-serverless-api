@@ -1,9 +1,3 @@
-# Welcome to serverless. Read the docs
-# https://serverless.com/framework/docs/
-
-# Serverless.yml is the configuration the CLI
-# uses to deploy your code to your provider of choice
-
 # The `service` block is the name of the service
 service: first-serverless-api
 
@@ -13,15 +7,29 @@ frameworkVersion: '2'
 provider:
   name: aws
   runtime: nodejs12.x
+  iamRoleStatements:
+    - Effect: Allow
+
 
 plugins:
   - serverless-offline
 
+package:
+  individually: true
+
 functions:
-  hello:
+  helloWorld:
     handler: handler.helloWorld
     events:
       - http:
           path: /
-          method: get
+          method: GET
           cors: true
+  getParams:
+    handler: handler.getParams
+    events:
+      - http:
+          path: create/{query?}
+          method: POST
+          cors: true
+
